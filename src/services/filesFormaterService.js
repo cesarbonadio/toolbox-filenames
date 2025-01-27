@@ -10,19 +10,30 @@ const getLinesFromContent = (content) => {
     let lines = content.split('\n')
 
     for (const [index,line] of lines.entries()) {
-        if (index == 0) continue
+        if (index == 0) {
+            console.log('AAAAAAAAAAAAAAAAA', line)
+            continue
+        }
 
         console.log(index, line)
 
         //const regex = /[a-zA-Z0-9]+,[a-zA-Z]+,\d+,[a-zA-Z0-9]+$/
-        const regex = /([a-zA-Z0-9]+\.[a-zA-Z0-9]+),([a-zA-Z]+),(\d+),([a-zA-Z0-9]+)+$/
+        const regex = /([a-zA-Z0-9]+\.[a-zA-Z0-9]+),([a-zA-Z]+),(\d+),([a-zA-Z0-9]+)$/
 
         if (regex.test(line)) {
             const match = line.match(regex)
 
-            console.log(match)
+            filteredLines.push({
+                file: match[1],
+                text: match[2],
+                number: match[3],
+                hex: match[4]
+            })
+            // console.log(match[1])
         }
     }
+
+    console.log(filteredLines)
 }
 
 export const getFormats = async() => {
@@ -41,8 +52,6 @@ export const getFormats = async() => {
               'Authorization': `Bearer ${process.env.EXTERNAL_API_TOKEN}`
             }
         }).then(response => {
-            //console.log(response.status)
-            console.log(response.data)
             files = response.data.files
         })
         
@@ -53,14 +62,11 @@ export const getFormats = async() => {
                   'Authorization': `Bearer ${process.env.EXTERNAL_API_TOKEN}`
                 }
             }).then(response => {
-                console.log(response.data)
                 getLinesFromContent(response.data)
             }).catch(error => {
                 console.log(`Error fetching file ${file}`)
-                console.log(error)
             })
         }
-            
 
 		// const result = await filesFormaterService.getFormats(currency, product)
 		//res.json({})
