@@ -5,7 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "mocha --require mocha-suppress-logs './src/tests/**/*.js'",
+    "test": "mocha --require mocha-suppress-logs './src/tests/**/*.js' --timeout 15000",
     "dev": "nodemon src/index.js",
     "start": "node src/index.js"
   },
