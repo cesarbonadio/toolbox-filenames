@@ -30,7 +30,7 @@ const makeRequest = async({ method, url, data = {}, params = {}, headers = {} })
     })
     return response.data
   } catch (error) {
-    console.error('API Request Error:', error.response || error.message)
+    console.error('API Request Error:', error.message)
     throw error.response?.data || error.message
   }
 }

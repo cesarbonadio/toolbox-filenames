@@ -5,5 +5,6 @@ const router = Router()
 
 // files routes
 router.get('/data', filesFormaterController.getFormats)
+router.get('/list', filesFormaterController.getFilesList)
 
 export default router
