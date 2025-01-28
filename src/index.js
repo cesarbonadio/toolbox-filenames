@@ -9,7 +9,7 @@ const listenPort = process.env.PORT
 const listenHost = process.env.HOST
 
 // create http server
-const server = app.listen(listenPort, () => {
+export const server = app.listen(listenPort, () => {
     let host = server.address().address
     let port = server.address().port
     console.log(`Created http (express) server at http://${host}:${port}`)

@@ -5,18 +5,28 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "test": "mocha --require mocha-suppress-logs './src/tests/**/*.js'",
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index.js"
   },
   "author": "Cesar Bonadio",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.9",
+    "chai": "^4.3.7",
+    "chai-http": "^4.4.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "express-rate-limit": "^7.5.0",
-    "nodemon": "^3.1.9"
+    "express-rate-limit": "^6.11.0",
+    "joi": "^17.13.3",
+    "mocha": "^10.7.3",
+    "nock": "^13.5.5",
+    "nodemon": "^3.1.9",
+    "sinon": "^18.0.0"
+  },
+  "devDependencies": {
+    "mocha-suppress-logs": "^0.5.1",
+    "standard": "^17.1.2"
   }
 }

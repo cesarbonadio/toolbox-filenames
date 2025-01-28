@@ -18,7 +18,7 @@ export const getLinesFromContent = (content) => content
     .split('\n')
     .slice(1)
     .map(line => {
-        const match = line.match(/([a-zA-Z0-9]+\.[a-zA-Z0-9]+),([a-zA-Z]+),(\d+),([a-zA-Z0-9]+)$/)
+        const match = line.match(/([a-zA-Z0-9]+\.[a-zA-Z0-9]+),([a-zA-Z]+),(\d+),([a-fA-F0-9]{32})$/)
         if (!match) return null
         const [, , text, number, hex] = match
         return { text, number, hex }
