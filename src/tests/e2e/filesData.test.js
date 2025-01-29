@@ -26,11 +26,11 @@ describe('Pruebas e2e para el endpoint /files/data', () => {
             formated.lines.forEach(line => {
                 // check second level properties
                 expect(line).to.have.property('text').and.to.be.a('string')
-                expect(line).to.have.property('number').and.to.be.a('string')
+                expect(line).to.have.property('number').and.to.be.a('number')
                 expect(line).to.have.property('hex').and.to.be.a('string')
 
                 expect(line.text.match(/[a-zA-Z]+$/)).to.not.be.null
-                expect(line.number.match(/\d+$/)).to.not.be.null
+                expect(line.number.toString().match(/\d+$/)).to.not.be.null
                 expect(line.hex.match(/[a-fA-F0-9]{32}$/)).to.not.be.null
 
                 expect(!isNaN(line.number)).to.be.true

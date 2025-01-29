@@ -8,6 +8,7 @@ import axiosConfig from '../config/axios.js'
  * @param {Object} [data] - The request payload for POST, PUT, or PATCH requests.
  * @param {Object} [params] - Query parameters for GET requests.
  * @param {Object} [headers] - Custom headers for the request.
+ * @param {Boolean} returnAllResult - a Parameter that defines if should return all results
  * @returns {Promise<Object>} - A promise that resolves with the response data.
  * @throws {Error} - Throws an error if the request fails.
  * 
@@ -16,7 +17,7 @@ import axiosConfig from '../config/axios.js'
  *   .then(response => console.log(response))
  *   .catch(error => console.error(error))
  */
-const makeRequest = async({ method, url, data = {}, params = {}, headers = {} }) => {
+const makeRequest = async({ method, url, data = {}, params = {}, headers = {} }, returnAllResult = false) => {
   try {
     const response = await axiosConfig({
         method,
@@ -28,7 +29,7 @@ const makeRequest = async({ method, url, data = {}, params = {}, headers = {} })
             ...headers,
         },
     })
-    return response.data
+    return returnAllResult ? response : response.data
   } catch (error) {
     console.error('API Request Error:', error.message)
     throw error.response?.data || error.message

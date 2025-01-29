@@ -16,7 +16,7 @@ export const getFormats = async(specificFile = null) => {
     const formattedFilesPromises = files.map(async (file) => {
       try {
         const fileContent = await filesFormaterModel.fetchFileContentByName(file); // Fetch the content of each file
-        const formattedLines = getLinesFromContent(fileContent); // Extract lines from the file content
+        const formattedLines = getLinesFromContent(fileContent, file); // Extract lines from the file content
 
         if (formattedLines.length > 0) {
           return { file, lines: formattedLines }
