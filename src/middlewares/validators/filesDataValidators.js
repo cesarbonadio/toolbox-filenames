@@ -65,7 +65,6 @@ export const validateFilesDataParams = (req, res, next) => {
  * });
  */
 export const validateFilesListParams = (req, res, next) => {
-  console.log(Object.keys(req.query).length)
   let error
   if (Object.keys(req.query).length > 0) {
     error = {
