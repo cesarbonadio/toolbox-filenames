@@ -14,14 +14,14 @@ import { handleControllerError, sendSuccessResponse } from '../utils/responseHel
  * @returns {Promise<void>} A promise that resolves when the response is sent.
  * @throws {Error} If an error occurs during the service call, it is logged and an appropriate error response is sent.
  */
-export const getFormats = async(req, res) => {
-	try {
-		const specificFile = req?.query?.fileName || null
-		const formats = await filesFormaterService.getFormats(specificFile)
-		sendSuccessResponse(res, formats)
-	} catch (error) {
-		handleControllerError(res, error, 'Error getting the files formats at controller level')
-	}
+export const getFormats = async (req, res) => {
+  try {
+    const specificFile = req?.query?.fileName || null
+    const formats = await filesFormaterService.getFormats(specificFile)
+    sendSuccessResponse(res, formats)
+  } catch (error) {
+    handleControllerError(res, error, 'Error getting the files formats at controller level')
+  }
 }
 
 /**
@@ -34,11 +34,11 @@ export const getFormats = async(req, res) => {
  * @returns {Promise<void>} A promise that resolves when the response is sent.
  * @throws {Error} If an error occurs during the service call, it is logged and an appropriate error response is sent.
  */
-export const getFilesList = async(req, res) => {
-	try {
-		const filesList  = await filesFormaterService.getTotalFilesList()
-		sendSuccessResponse(res, filesList)
-	} catch (error) {
-		handleControllerError(res, error, 'Error fetching file names at controller level')
-	}
+export const getFilesList = async (req, res) => {
+  try {
+    const filesList = await filesFormaterService.getTotalFilesList()
+    sendSuccessResponse(res, filesList)
+  } catch (error) {
+    handleControllerError(res, error, 'Error fetching file names at controller level')
+  }
 }

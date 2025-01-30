@@ -6,7 +6,7 @@
  * @param {number} [status=200] - HTTP status code.
  */
 export const sendSuccessResponse = (res, data, status = 200) => {
-    res.status(status).json(data)
+  res.status(status).json(data)
 }
 
 /**
@@ -17,12 +17,12 @@ export const sendSuccessResponse = (res, data, status = 200) => {
  * @param {string} logMessage - A message to log for debugging purposes.
  */
 export const handleControllerError = (res, error, logMessage) => {
-    console.error(logMessage, error)
-    res.status(error.status || 500).json({
-        success: false,
-        error: error.type || 'InternalServerError',
-        message: error.errorData?.code
-            ? `${error.errorData.code} - ${error.message}`
-            : error.message,
-    })
+  console.error(logMessage, error)
+  res.status(error.status || 500).json({
+    success: false,
+    error: error.type || 'InternalServerError',
+    message: error.errorData?.code
+      ? `${error.errorData.code} - ${error.message}`
+      : error.message
+  })
 }

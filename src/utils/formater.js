@@ -16,23 +16,23 @@
  * // Output: [{ text: 'abc', number: '123', hex: '456xyz' }, { text: 'def', number: '456', hex: '789abc' }]
  */
 export const getLinesFromContent = (content, expectedFileName) => {
-    const [firstLine, ...restLines] = content.trim().split('\n')
+  const [firstLine, ...restLines] = content.trim().split('\n')
 
-    if (!firstLine) return []
+  if (!firstLine) return []
 
-    return firstLine.startsWith('file,text,number,hex')
-        ? restLines
-            .map(line => {
-                const match = line.match(/([a-zA-Z0-9]+\.[a-zA-Z0-9]+),([a-zA-Z]+),(\d+),([a-fA-F0-9]{32})$/)
-                if (!match) return null
-                let [, filename, text, number, hex] = match
-                number = Number(number)
-                return { filename, text, number, hex }
-            })
-            .filter(Boolean)
-            .filter(({ filename }) => filename === expectedFileName)
-            .map(({ text, number, hex }) => ({ text, number, hex }))
-        : (() => {
-            throw new Error('Invalid first line format')
-        })()
+  return firstLine.startsWith('file,text,number,hex')
+    ? restLines
+      .map(line => {
+        const match = line.match(/([a-zA-Z0-9]+\.[a-zA-Z0-9]+),([a-zA-Z]+),(\d+),([a-fA-F0-9]{32})$/)
+        if (!match) return null
+        let [, filename, text, number, hex] = match
+        number = Number(number)
+        return { filename, text, number, hex }
+      })
+      .filter(Boolean)
+      .filter(({ filename }) => filename === expectedFileName)
+      .map(({ text, number, hex }) => ({ text, number, hex }))
+    : (() => {
+        throw new Error('Invalid first line format')
+      })()
 }

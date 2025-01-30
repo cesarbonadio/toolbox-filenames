@@ -10,7 +10,7 @@ import makeRequest from '../utils/axiosRequester.js'
  * Fetches the list of files from the `/secret/files` endpoint.
  *
  * This function makes a GET request to the API to retrieve the list of files.
- * It safely extracts the `files` property from the API response. If the `files` 
+ * It safely extracts the `files` property from the API response. If the `files`
  * property is missing or undefined, an empty array is returned.
  *
  * @async
@@ -18,11 +18,11 @@ import makeRequest from '../utils/axiosRequester.js'
  * @returns {Promise<Array>} A promise that resolves to an array of files. If no files are found, returns an empty array.
  * @throws {Error} If the request fails, the error is propagated for handling by the caller.
  */
-export const fetchFilesList = async() => {
-    return (await makeRequest({
-        method: 'GET',
-        url: '/secret/files'
-    }))?.files ?? []
+export const fetchFilesList = async () => {
+  return (await makeRequest({
+    method: 'GET',
+    url: '/secret/files'
+  }))?.files ?? []
 }
 
 /**
@@ -37,9 +37,9 @@ export const fetchFilesList = async() => {
  * @returns {Promise<Object|null>} A promise that resolves to the file content as an object, or `null` if no content is found.
  * @throws {Error} If the request fails, the error is propagated for handling by the caller.
  */
-export const fetchFileContentByName = async(fileName) => {
-    return (await makeRequest({
-        method: 'GET',
-        url: `/secret/file/${fileName}`
-    })) ?? null
+export const fetchFileContentByName = async (fileName) => {
+  return (await makeRequest({
+    method: 'GET',
+    url: `/secret/file/${fileName}`
+  })) ?? null
 }

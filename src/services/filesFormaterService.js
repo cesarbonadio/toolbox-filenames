@@ -3,20 +3,20 @@ import { getLinesFromContent } from '../utils/formater.js'
 
 /**
  * Retrieves and formats the content of files.
- * 
- * This function fetches the list of files, retrieves their content, formats the lines of each file, 
+ *
+ * This function fetches the list of files, retrieves their content, formats the lines of each file,
  * and returns a list of formatted files with their corresponding lines.
- * 
+ *
  * @returns {Promise<Array<Object>>} A promise that resolves to an array of formatted files and their lines.
  */
-export const getFormats = async(specificFile = null) => {
+export const getFormats = async (specificFile = null) => {
   try {
     let files = await filesFormaterModel.fetchFilesList()
     if (specificFile) files = files.filter(file => file === specificFile)
     const formattedFilesPromises = files.map(async (file) => {
       try {
-        const fileContent = await filesFormaterModel.fetchFileContentByName(file); // Fetch the content of each file
-        const formattedLines = getLinesFromContent(fileContent, file); // Extract lines from the file content
+        const fileContent = await filesFormaterModel.fetchFileContentByName(file) // Fetch the content of each file
+        const formattedLines = getLinesFromContent(fileContent, file) // Extract lines from the file content
 
         if (formattedLines.length > 0) {
           return { file, lines: formattedLines }

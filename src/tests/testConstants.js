@@ -12,9 +12,9 @@ example9.csv,xYiGJmOGE,81220,01eb97a35d6e3b902a873874468d3e10
 example9.csv,dgjXf,682582,a0ff8a57088a79f11b3f01944c004ed2
 `
 
-export const emptyFile = ``
+export const emptyFile = ''
 
-export const emptyFileJustHeader = `file,text,number,hex`
+export const emptyFileJustHeader = 'file,text,number,hex'
 
 // not valid files
 export const notValidFileNumberMistakes = `file,text,number,hex
