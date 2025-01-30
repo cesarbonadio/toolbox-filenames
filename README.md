@@ -71,6 +71,13 @@ Ejecuta el proyecto:
 npm start
 ```
 
+## Instalación y Configuración manual
+
+Para realizar las pruebas ejecutar el comando:
+```bash
+npm test
+```
+
 
 ## Posibles Errores
 
